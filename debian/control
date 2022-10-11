@@ -1,0 +1,49 @@
+Source: liboauth
+Priority: optional
+Maintainer: Laurin Hagemann <laurinhg@gmx.de>
+Build-Depends: curl,
+               debhelper-compat (= 13),
+               libcurl4-gnutls-dev | libcurl4-dev,
+               libnss3-dev,
+               libtool,
+               locales-all | language-pack-en,
+               pkg-config
+Standards-Version: 4.5.0
+Section: libs
+Homepage: http://liboauth.sourceforge.net/
+Vcs-Git: https://salsa.debian.org/debian/liboauth.git
+Vcs-Browser: https://salsa.debian.org/debian/liboauth
+Rules-Requires-Root: no
+
+Package: liboauth-dev
+Section: libdevel
+Architecture: any
+Depends: libcurl4-gnutls-dev | libcurl4-dev,
+         libnss3-dev,
+         liboauth0 (= ${binary:Version}),
+         ${misc:Depends}
+Multi-Arch: same
+Description: C library implementing OAuth Core 1.0a API (development files)
+ OAuth (Open Authorization) is an authentication protocol that allows
+ users to approve a client (such as a Twitter third-party app) to act on
+ their behalf without sharing their password. liboauth provides basic
+ functions to escape and encode parameters according to the OAuth Core
+ 1.0a API, and offers high-level functions to sign requests or verify
+ signatures.
+ .
+ This package contains the development files.
+
+Package: liboauth0
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: C library implementing OAuth Core 1.0a API (runtime)
+ OAuth (Open Authorization) is an authentication protocol that allows
+ users to approve a client (such as a Twitter third-party app) to act on
+ their behalf without sharing their password. liboauth provides basic
+ functions to escape and encode parameters according to the OAuth Core
+ 1.0a API, and offers high-level functions to sign requests or verify
+ signatures.
+ .
+ This package contains the shared libraries.

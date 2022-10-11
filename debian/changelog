@@ -1,0 +1,187 @@
+liboauth (1.0.3-5) unstable; urgency=medium
+
+  * Adopted package (Closes: #973473, #871919)
+  * renamed-tag in debian/liboauth0.lintian-overrides
+  * compat level bump 12 -> 13
+
+ -- Laurin Hagemann <laurinhg@gmx.de>  Sat, 31 Oct 2020 14:04:08 +0100
+
+liboauth (1.0.3-4) unstable; urgency=medium
+
+  * QA upload.
+  * Remove d/gbp.conf.
+    - branch information was wrong.
+    - gbp.conf is not needed for normal cases.
+  * Update Standards-Version to 4.5.0
+  * Use debhelper-compat.
+
+ -- Sudip Mukherjee <sudipm.mukherjee@gmail.com>  Wed, 11 Mar 2020 22:43:32 +0000
+
+liboauth (1.0.3-3) unstable; urgency=medium
+
+  * QA upload.
+  * Add debian/not-installed to suppress dh_missing warnings.
+  * Add 06_null_ptr_deref.patch, cherry-picked from upstream to avoid
+    possible null pointer dereference.
+  * Drop 02_xmalloc_dont_exit.patch, since fixing the shlib-calls-exit
+    lintian warning by introducing a possible null pointer dereference is
+    incorrect. Use an override to suppress it instead.
+  * Update debian/gbp.conf: change debian branch to debian/master.
+
+ -- Carlos Maddela <e7appew@gmail.com>  Mon, 28 Jan 2019 09:25:08 +1100
+
+liboauth (1.0.3-2) unstable; urgency=medium
+
+  * QA upload.
+  * Update debian/gbp.conf to conform with DEP14 conventions.
+  * Update VCS details.
+  * Simplify LFS build rules.
+  * Build verbosely.
+  * Update Lintian override to use debian-watch-does-not-check-gpg-signature
+    tag.
+  * Build with Debhelper compat level 12.
+  * Set "Rules-Requires-Root: no".
+  * Add Build-Depends-Package details to symbols file.
+  * Update debian/copyright.
+  * Add machine-readable upstream metadata.
+  * Update debian/watch.
+  * Replace 03_man_page_typos.patch with 03_fix_typos.patch to fix more
+    typos detected.
+  * Indicate that the patches that I have personally authored have
+    been forwarded upstream.
+  * Indicate compliance with Debian Policy 4.3.0.
+
+ -- Carlos Maddela <e7appew@gmail.com>  Sun, 27 Jan 2019 09:21:53 +1100
+
+liboauth (1.0.3-1) unstable; urgency=medium
+
+  * QA upload.
+  * New upstream release [1.0.3].
+  * Bump Standards-Version to 4.1.0 and debhelper compat level to 10.
+  * debian/control:
+    - Update maintainer to Debian QA Group.
+    - Update VCS URLs to use secure protocols.
+    - Mark liboauth-dev package as Multi-Arch: same.
+    - Rewrite package descriptions. Thanks to Martin Eberhard Schauer
+      and Justin B Rye. (Closes: #654334)
+    - Perform wrap-and-sort.
+    - Add build dependency on curl.
+  * debian/rules:
+    - Simplify clean-up rule.
+    - Build with all hardening flags set.
+    - Suppress warnings about use of deprecated functions.
+    - Enable LFS support on 32-bit architectures.
+  * Update library's symbols file to include the functions available
+    when built with command-line curl feature.
+  * Suppress debian-watch-may-check-gpg-signature Lintian warning.
+  * debian/copyright:
+    - Update details.
+    - Remove redundancy.
+    - Use Expat as license identifier, in preference to MIT, since
+      it matches this specifically.
+  * debian/patches/*:
+    - Regenerate with git-buildpackage.
+    - Drop 01_fix_manpage_spelling_errors.patch already applied upstream.
+    - Fix newly detected typos in man page.
+    - Update configure.ac for Autoconf 2.69.
+    - Update Makefile.am files for Automake 1.15.
+
+ -- Carlos Maddela <e7appew@gmail.com>  Mon, 28 Aug 2017 01:03:20 +1000
+
+liboauth (1.0.1-1) unstable; urgency=low
+
+  * New upstream release.
+  * Update Standards-Version to 3.9.4 (No changes needed)
+  * Build with dh_autoreconf (Closes: #700686)
+    - Thanks Daniel Schepler <dschepler@gmail.com> for the patch!
+    - debian/patches/01_ltmain_as-needed.patch is obsolete now, dropped.
+  * debian/control:
+    - Add dh-autoreconf build-dep.
+    - Bump debhelper versioned build-dep to 9 to match compat.
+    - Properly truncate sentence at end of package description
+      for English language compliance.
+    - Update Git URLs
+  * debian/patches/01_fix_manpage_spelling_errors.patch: Fix manpage
+    spelling errors to satisfy lintian.
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Wed, 19 Jun 2013 22:19:44 -0400
+
+liboauth (0.9.4-3.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Fix "please make loose libcurl dependency":
+    change liboauth-dev's Depends to "libcurl4-gnutls-dev | libcurl4-dev,
+    libnss3-dev" (instead of "libcurl4-nss-dev")
+    (Closes: #639565)
+  * Fix "liboauth0: doesn't work with NSS libcurl flavour":
+    build-depend on "libcurl4-gnutls-dev | libcurl4-dev" (instead of
+    "libcurl4-nss-dev")
+    (Closes: #650138)
+  * Thanks to HAMANO Tsukasa and Alessandro Ghedini for accompanying me
+    through this maze, and to Satoru KURASHIKI for additional tests.
+
+ -- gregor herrmann <gregoa@debian.org>  Fri, 21 Sep 2012 14:19:45 +0200
+
+liboauth (0.9.4-3) unstable; urgency=low
+
+  * Sync from Ubuntu:
+    [ Mathieu Trudel-Lapierre ]
+      * debian/control: liboauth-dev really needs libcurl4-nss-dev, not
+        libcurl4-gnutls-dev (nss is required in the .pc file)
+        (closes: #646485, #639565)
+  [ Sjoerd Simons ]
+  * collab-main team update
+  * debian/control: Swith build-depend to libcurl4-nss-dev from
+    libcurl4-gnutls-dev. oauth itself uses nss for SSL
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sat, 05 Nov 2011 11:31:14 +0000
+
+liboauth (0.9.4-2) unstable; urgency=low
+
+  * Make package multiarch-aware.
+    - Bump compat to 9.
+  * debian/control:
+    - Add libcurl4-gnutls-dev to liboauth-dev dependencies, thanks Mathieu!
+    - Bump Standards-Version to 3.9.2 (no changes needed).
+  * debian/patches/02_xmalloc_dont_exit.patch: Return NULL in case malloc
+    fails.
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Wed, 10 Aug 2011 14:51:38 +0300
+
+liboauth (0.9.4-1) unstable; urgency=low
+
+  * New upstream release.
+  * Upload to unstable.
+  * debian/copyright: Re-write in DEP-5 format.
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Mon, 07 Feb 2011 13:06:37 +0300
+
+liboauth (0.9.3-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/rules:
+    - Remove the unnecessary change made to the LDFLAGS env var.
+  * debian/watch: Change URL to that of the SF file hosting system which
+    is now being used by upstream.
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Tue, 25 Jan 2011 18:27:44 +0300
+
+liboauth (0.9.1-2) experimental; urgency=low
+
+  * debian/control:
+    - Add Vcs-Git and Vcs-Browser fields.
+  * debian/rules:
+    - Install upstream changelog.
+  * debian/patches/02_xmalloc_dont_exit.patch: Don't exit in case of a failure
+    of memory allocation. This fixes a lintian X: tag, and doesn't cause any
+    breakage.
+  * debian/liboauth0.symbols: Add symbols control file. (Closes: #609963)
+  * Run wrap-and-sort.
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Fri, 14 Jan 2011 18:28:14 +0300
+
+liboauth (0.9.1-1) unstable; urgency=low
+
+  *  Initial Release (Closes: #581601)
+
+ -- Bilal Akhtar <bilalakhtar@ubuntu.com>  Thu, 21 Oct 2010 12:59:37 +0300

@@ -1,0 +1,123 @@
+From: Carlos Maddela <e7appew@gmail.com>
+Date: Sun, 27 Aug 2017 17:57:35 +1000
+Subject: Fix various typos in man page and source.
+
+Description: Fix various typos in man page and source.
+Author: Carlos Maddela <e7appew@gmail.com>
+Forwarded: https://github.com/x42/liboauth/pull/10
+Last-Update: 2019-01-27
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+---
+ doc/oauth.3      | 8 ++++----
+ src/oauth.c      | 2 +-
+ src/oauth.h      | 8 ++++----
+ src/oauth_http.c | 2 +-
+ 4 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/doc/oauth.3 b/doc/oauth.3
+index f41e6ff..9f3448b 100644
+--- a/doc/oauth.3
++++ b/doc/oauth.3
+@@ -426,7 +426,7 @@ use libcurl - http://curl.haxx.se/libcurl/c/
+ .PP
+ do a HTTP GET request, wait for it to finish and return the content of the reply\&. (requires libcurl)
+ .PP
+-This is equivalent to /ref oauth_http_get but allows one to specifiy a custom HTTP header andhas no support for commandline-curl\&.
++This is equivalent to /ref oauth_http_get but allows one to specify a custom HTTP header and has no support for commandline-curl\&.
+ .PP
+ If liboauth is compiled \fBwithout\fP libcurl this function always returns NULL\&.
+ .PP
+@@ -539,7 +539,7 @@ FALSE (0) if array does not contain a parameter with given key, TRUE (1) otherwi
+ .SS "char* oauth_post_data (const char * u, const char * data, size_t len, const char * customheader)"
+ 
+ .PP
+-http post raw data the returned string needs to be freed by the caller (requires libcurl) see dislaimer: /ref oauth_http_post
++http post raw data the returned string needs to be freed by the caller (requires libcurl) see disclaimer: /ref oauth_http_post
+ .PP
+ \fBParameters:\fP
+ .RS 4
+@@ -605,7 +605,7 @@ use libcurl - http://curl.haxx.se/libcurl/c/
+ .PP
+ http post raw data from file\&. the returned string needs to be freed by the caller (requires libcurl)
+ .PP
+-see dislaimer: /ref oauth_http_post
++see disclaimer: /ref oauth_http_post
+ .PP
+ \fBParameters:\fP
+ .RS 4
+@@ -636,7 +636,7 @@ http send raw data\&. similar to /ref oauth_http_post but provides for specifyin
+ .PP
+ the returned string needs to be freed by the caller (requires libcurl)
+ .PP
+-see dislaimer: /ref oauth_http_post
++see disclaimer: /ref oauth_http_post
+ .PP
+ \fBParameters:\fP
+ .RS 4
+diff --git a/src/oauth.c b/src/oauth.c
+index 9529e2a..cc82a20 100644
+--- a/src/oauth.c
++++ b/src/oauth.c
+@@ -544,7 +544,7 @@ char *oauth_gen_nonce() {
+ }
+ #else // OpenSSL or NSS random number generator
+ #ifdef USE_NSS
+-  void oauth_init_nss(); //decladed in hash.c
++  void oauth_init_nss(); //declared in hash.c
+ #  include "pk11pub.h"
+ #  define MY_RAND PK11_GenerateRandom
+ #  define MY_SRAND  oauth_init_nss();
+diff --git a/src/oauth.h b/src/oauth.h
+index bb6dc3c..008c0b3 100644
+--- a/src/oauth.h
++++ b/src/oauth.h
+@@ -578,7 +578,7 @@ char *oauth_http_get (const char *u, const char *q) attribute_deprecated;
+  * (requires libcurl)
+  *
+  * This is equivalent to /ref oauth_http_get but allows one
+- * to specifiy a custom HTTP header andhas no support for commandline-curl.
++ * to specify a custom HTTP header and has no support for commandline-curl.
+  *
+  * If liboauth is compiled <b>without</b> libcurl this function
+  * always returns NULL.
+@@ -656,7 +656,7 @@ char *oauth_http_post2 (const char *u, const char *p, const char *customheader)
+  * the returned string needs to be freed by the caller
+  * (requires libcurl)
+  *
+- * see dislaimer: /ref oauth_http_post
++ * see disclaimer: /ref oauth_http_post
+  *
+  * @param u url to retrieve
+  * @param fn filename of the file to post along
+@@ -674,7 +674,7 @@ char *oauth_post_file (const char *u, const char *fn, const size_t len, const ch
+  * the returned string needs to be freed by the caller
+  * (requires libcurl)
+  *
+- * see dislaimer: /ref oauth_http_post
++ * see disclaimer: /ref oauth_http_post
+  *
+  * @param u url to retrieve
+  * @param data data to post
+@@ -724,7 +724,7 @@ char *oauth_post_data_with_callback      (const char *u,
+  * the returned string needs to be freed by the caller
+  * (requires libcurl)
+  *
+- * see dislaimer: /ref oauth_http_post
++ * see disclaimer: /ref oauth_http_post
+  *
+  * @param u url to retrieve
+  * @param data data to post
+diff --git a/src/oauth_http.c b/src/oauth_http.c
+index 9d637e1..6bccec7 100644
+--- a/src/oauth_http.c
++++ b/src/oauth_http.c
+@@ -461,7 +461,7 @@ char *oauth_escape_shell (const char *cmd) {
+ /**
+  * execute command via shell and return it's output.
+  * This is used to call 'curl' or 'wget'.
+- * the command is uses <em>as is</em> and needs to be propery escaped.
++ * the command is used <em>as is</em> and needs to be properly escaped.
+  *
+  * @param cmd the commandline to execute
+  * @return stdout string that needs to be freed or NULL if there's no output

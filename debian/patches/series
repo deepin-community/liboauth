@@ -1,0 +1,4 @@
+03_fix_typos.patch
+04_autoconf_2.69.patch
+05_automake_1.15.patch
+06_null_ptr_deref.patch

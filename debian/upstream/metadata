@@ -1,0 +1,12 @@
+%YAML 1.1
+---
+# https://wiki.debian.org/UpstreamMetadata
+Bug-Database: https://github.com/x42/liboauth/issues
+Bug-Submit: https://github.com/x42/liboauth/issues/new
+Changelog: https://github.com/x42/liboauth/blob/master/ChangeLog
+Contact: Robin Gareus <robin@gareus.org>
+Homepage: http://liboauth.sourceforge.net/
+Name: liboauth
+Repository: https://github.com/x42/liboauth.git
+Repository-Browse: https://github.com/x42/liboauth/commits/master
+Security-Contact: Robin Gareus <robin@gareus.org>
